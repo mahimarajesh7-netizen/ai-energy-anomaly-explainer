@@ -1,11 +1,17 @@
 """
 AI Energy Anomaly Explainer
 ============================
-Streamlit web application for detecting and explaining
-industrial sensor anomalies using ML + LLM.
+Streamlit web application for detecting and explaining industrial sensor
+anomalies using a Random Forest ML model (F1=0.981) paired with a local
+Llama 3.2 LLM that generates plain-English cause/severity/action output.
 
-Author: Mahima Rajesh
-Portfolio project for Imperial College MSc BA
+Pipeline:
+  1. Random Forest trained on 14,965 rows of SKAB pump sensor data
+  2. 16 engineered features: rolling mean, std, rate-of-change per sensor
+  3. Anomaly probabilities fed to Llama 3.2 (via Ollama) for explanation
+  4. Severity-coded cards (HIGH/MEDIUM/LOW) rendered in Streamlit
+
+Author: Mahima Rajesh — Imperial College London, MSc Business Analytics
 """
 
 import streamlit as st
